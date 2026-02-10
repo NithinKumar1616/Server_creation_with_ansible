@@ -18,6 +18,5 @@
       instance_type: "{{ instance_type }}"
       security_group: "{{ sg_group }}"
       image_id: "{{ image_id }}"
-      instance_type: "{{ instance }}"
     loop: "{{ instances }}"
     register: ec2_info
