@@ -14,13 +14,11 @@
     sg_group: sg-00450fb4c83b6b01d
     image_id: ami-0220d79f3f480ecf5
   tasks:
-
-  - name: Install Python Dependencies
+  - name: Install AWS Python libraries
     ansible.builtin.pip:
-    name: "{{item}}"
-    executable: pip3.9
+      name: "{{item}}"
+      executable: pip3.9
     loop: "{{ packages }}"
-    
   - name: start an instance with a public IP address
     amazon.aws.ec2_instance:
       name: "{{ item }}"
