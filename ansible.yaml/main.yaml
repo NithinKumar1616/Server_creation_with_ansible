@@ -54,14 +54,14 @@
     loop: "{{ ec2_info.results }}"
 
   - name: update public ip r53 records
-  amazon.aws.route53:
-    state: present
-    zone: "{{ public_zone }}"
-    record: "{{public_zone}}"
-    type: A
-    ttl: 1
-    value: "{{ item.instances[0].public_ip_address }}"
-    wait: true
-    overwrite: true
-  loop: "{{ ec2_info.results }}"
-  when: item.item == "frontend"
+    amazon.aws.route53:
+      state: present
+      zone: "{{ public_zone }}"
+      record: "{{public_zone}}"
+      type: A
+      ttl: 1
+      value: "{{ item.instances[0].public_ip_address }}"
+      wait: true
+      overwrite: true
+    loop: "{{ ec2_info.results }}"
+    when: item.item == "frontend"
