@@ -11,13 +11,13 @@
     sg_group: sg-00450fb4c83b6b01d
     image_id: ami-0220d79f3f480ecf5
   tasks:
-    - name: start an instance with a public IP address
-  amazon.aws.ec2_instance:
-    name: "{{ item }}"
-    vpc_subnet_id: "{{ subnet_id }}"
-    instance_type: "{{ instance_type }}"
-    security_group: "{{ sg_group }}"
-    image_id: "{{ image_id }}"
-    instance_type: "{{ instance }}"
+  - name: start an instance with a public IP address
+    amazon.aws.ec2_instance:
+      name: "{{ item }}"
+      vpc_subnet_id: "{{ subnet_id }}"
+      instance_type: "{{ instance_type }}"
+      security_group: "{{ sg_group }}"
+      image_id: "{{ image_id }}"
+      instance_type: "{{ instance }}"
     loop: "{{ instances }}"
     register: ec2_info
